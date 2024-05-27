@@ -1,0 +1,14 @@
+[Unit]
+Description=Lcd4linux daemon
+Documentation=man:lcd4linux(8)
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/lcd4linux -f /etc/lcd4linux.conf -F
+ExecStop=/bin/kill -SIGKILL $MAINPID
+KillMode=process
+Restart=on-failure
+RestartSec=35s
+
+[Install]
+WantedBy=multi-user.target
